@@ -23,6 +23,7 @@ abbr -a arc 'nvim ~/.config/alacritty/alacritty.yml'
 abbr -a vrc 'nvim ~/.config/nvim/init.vim'
 abbr -a frc 'nvim ~/.config/fish/config.fish'
 abbr -a trc 'nvim ~/.tmux.conf'
+abbr -a gitd 'git diff --ignore-space-at-eol -b -w --ignore-blank-lines'
 
 
 # Sources
