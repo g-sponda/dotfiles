@@ -1,5 +1,5 @@
 install: ## Create symlinks
-	@scripts/bootstrap.sh
+	@scripts/bootstrap.fish
 
 .PHONY: help
 
