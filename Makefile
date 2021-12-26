@@ -1,4 +1,4 @@
-create_symlink: ## Create symlinks
+install: ## Create symlinks
 	@scripts/bootstrap.sh
 
 .PHONY: help

@@ -197,6 +197,7 @@ Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'tpope/vim-commentary'
 Plug 'xiyaowong/nvim-transparent'
+Plug 'ellisonleao/glow.nvim'
 
 " For luasnip users.
 Plug 'L3MON4D3/LuaSnip'
