@@ -8,7 +8,7 @@ export EDITOR=nvim
 # -----------------------------
 # PATHS -----------------------
 # -----------------------------
-set PATH $PATH:/Users/caio.teixeira/.cargo/bin
+set PATH $PATH:$HOME/.cargo/bin
 
 # -----------------------------
 # Abbreviations ---------------
@@ -35,8 +35,24 @@ abbr -a ninstall nvim +PlugInstall +qal
 # Opens AWS with lastpass
 abbr -a creds_aws 'open -a "Google Chrome" https://identity.lastpass.com/redirect\?id\=4cceaabd-c1f2-4854-8135-dd5660fb76f4'
 
+# Copies aws creds to ~/.aws/credentials
+abbr -a cp-aws 'cp /Users/caio.teixeira/Downloads/credentials /Users/caio.teixeira/.aws/credentials'
+
+# -----------------------------
+# Aliases ---------------------
+# -----------------------------
+
+if type -q exa
+  alias ls 'exa'
+  alias ll 'ls -l -g --icons'
+  alias la 'll -a'
+  alias lt 'la -T -L2'
+end
+
 # Vi mode
 function fish_user_key_bindings
     fish_default_key_bindings -M insert
     fish_vi_key_bindings --no-erase insert
 end
+
+direnv hook fish | source

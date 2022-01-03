@@ -1,4 +1,4 @@
-" set path+=**
+let mapleader = " "
 
 " Tab and spaces
 set tabstop=2 softtabstop=2
@@ -20,8 +20,11 @@ set signcolumn=yes
 set hidden
 
 " Some servers have issues with backup files, see #649.
-set nobackup
 set nowritebackup
+set nobackup
+set noswapfile
+set noundofile
+
 
 " Give more space for displaying messages.
 set cmdheight=2
@@ -33,54 +36,6 @@ set updatetime=50
 " Don't pass messages to |ins-completion-menu|.
 set shortmess+=c
 
-
-" Check if NERDTree is open or active
-function! IsNERDTreeOpen()
-  return exists("t:NERDTreeBufName") && (bufwinnr(t:NERDTreeBufName) != -1)
-endfunction
-
-function! CheckIfCurrentBufferIsFile()
-  return strlen(expand('%')) > 0
-endfunction
-
-" Call NERDTreeFind iff NERDTree is active, current window contains a modifiable
-" file, and we're not in vimdiff
-function! SyncTree()
-  if &modifiable && IsNERDTreeOpen() && CheckIfCurrentBufferIsFile() && !&diff
-    NERDTreeFind
-    wincmd p
-  endif
-endfunction
-
-" Highlight currently open buffer in NERDTree
-autocmd BufRead * call SyncTree()
-
-function! ToggleTree()
-  if CheckIfCurrentBufferIsFile()
-    if IsNERDTreeOpen()
-      NERDTreeClose
-    else
-      NERDTreeFind
-    endif
-  else
-    NERDTree
-  endif
-endfunction
-
-nmap ,/ :call ToggleTree()<CR>
-
-
-let NERDTreeWinSize = 20
-
-
-"set clipboard=unnamedplus
-
-" Copy paste yanked instead of deleted 
-nmap ,p "0p
-nmap ,P "0P
-
-
-
 " Enable mouse
 set mouse=a
 
@@ -88,7 +43,39 @@ set mouse=a
 syntax enable
 filetype plugin indent on
 
-let g:rustfmt_autosave = 1
+nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>so :edit $MYVIMRC<CR>
+" ----------------------------------------------
+"  NERDTree 
+" ----------------------------------------------
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
+let NERDTreeWinSize = 20
+
+" ----------------------------------------------
+" VimTree 
+" ----------------------------------------------
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
+
+" ----------------------------------------------
+"  Glow
+" ----------------------------------------------
+nnoremap <leader>p :Glow<CR>
+
+" Copy paste yanked instead of deleted 
+nmap ,p "0p
+nmap ,P "0P
+
+
+" ----------------------------------------------
+"  Fugitive
+" ----------------------------------------------
+
 
 " Syntastic
 set statusline+=%#warningmsg#
@@ -105,8 +92,7 @@ let g:syntastic_check_on_wq = 0
 "  Telescope
 " ----------------------------------------------
 "
-let mapleader = " "
-nmap <leader>l :Telescope file_browser<CR><ESC>
+" nmap <leader>l :Telescope file_browser<CR><ESC>
 
 " Find files using Telescope command-line sugar.
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -115,14 +101,23 @@ nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 
-" nmap ,b :Telescope file_browser<CR><ESC>
-" nmap ,l :Telescope find_files<CR><ESC>
 " ----------------------------------------------
 "  Plugins
 " ----------------------------------------------
 
 call plug#begin('~/.vim/plugged')
   Plug 'preservim/nerdtree'
+  Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+  Plug 'ryanoasis/vim-devicons'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+
+  Plug 'kyazdani42/nvim-web-devicons' " for file icons
+  Plug 'kyazdani42/nvim-tree.lua'
+
+  Plug 'nvim-lua/plenary.nvim'
+
+  Plug 'airblade/vim-gitgutter'
+
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-fugitive'
 
@@ -146,12 +141,36 @@ call plug#begin('~/.vim/plugged')
   Plug 'tpope/vim-commentary'
   Plug 'xiyaowong/nvim-transparent'
   Plug 'ellisonleao/glow.nvim'
+
+  Plug 'Pocco81/AutoSave.nvim'
+
 call plug#end()
-
-
 
 colorscheme dracula
 
 set completeopt=menu,menuone,noselect
 
 let g:transparent_enabled = v:true
+
+
+lua << EOF
+local autosave = require("autosave")
+
+autosave.setup(
+    {
+        enabled = true,
+        execution_message = "AutoSave: saved at " .. vim.fn.strftime("%H:%M:%S"),
+        events = {"InsertLeave", "TextChanged"},
+        conditions = {
+            exists = true,
+            filename_is_not = {},
+            filetype_is_not = {},
+            modifiable = true
+        },
+        write_all_buffers = false,
+        on_off_commands = true,
+        clean_command_line_interval = 0,
+        debounce_delay = 135
+    }
+)
+EOF

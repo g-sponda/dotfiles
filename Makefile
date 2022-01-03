@@ -1,5 +1,8 @@
 install: ## Create symlinks
-	@scripts/bootstrap.fish
+	@scripts/bootstrap.fish create_links
+
+remove: ## Delete symlinks
+	@scripts/bootstrap.fish remove_links
 
 .PHONY: help
 
