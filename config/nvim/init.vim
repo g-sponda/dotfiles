@@ -56,13 +56,6 @@ nnoremap <C-f> :NERDTreeFind<CR>
 let NERDTreeWinSize = 20
 
 " ----------------------------------------------
-" VimTree 
-" ----------------------------------------------
-nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-
-" ----------------------------------------------
 "  Glow
 " ----------------------------------------------
 nnoremap <leader>p :Glow<CR>
@@ -106,13 +99,11 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " ----------------------------------------------
 
 call plug#begin('~/.vim/plugged')
+  " NERDTree
   Plug 'preservim/nerdtree'
   Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
   Plug 'ryanoasis/vim-devicons'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-
-  Plug 'kyazdani42/nvim-web-devicons' " for file icons
-  Plug 'kyazdani42/nvim-tree.lua'
 
   Plug 'nvim-lua/plenary.nvim'
 
