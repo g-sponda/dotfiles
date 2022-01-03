@@ -53,7 +53,7 @@ nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
-let NERDTreeWinSize = 20
+let NERDTreeWinSize = 40
 
 " ----------------------------------------------
 "  Glow
