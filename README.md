@@ -2,6 +2,31 @@
 
 My collection of configuration files, the usage of those files is discouraged, use at your own risk.
 
+## Requirements
+
+All the required software to run this repo is listed below:
+* neovim
+* fish
+* exa
+* tmux
+* peco
+* jq
+* direnv
+
+```
+brew install neovim fish exa tmux peco jq direnv
+```
+
+Extra stuff I have installed:
+* spotify-tui
+* pre-commit
+* ipcalc
+
+
+```
+brew install spotify-tui pre-commit ipcalc
+```
+
 ## Installation
 
 Clone the repo and run make install, this will create a symbolic link of the configuration files to your $HOME dir. It should not overwrite your already existing symlinks if any.
