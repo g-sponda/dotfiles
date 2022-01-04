@@ -4,27 +4,42 @@ set CONFIG_DIR $PWD/config
 set FISH_CONFIG_DIR $CONFIG_DIR/fish
 set HOME_CONFIG_DIR $HOME/.config
 set FISH_HOME_CONFIG_DIR $HOME_CONFIG_DIR/fish/conf.d
+set FISH_HOME_FUNCTIONS_DIR $HOME_CONFIG_DIR/fish/functions
 
 function create_links
 
   # FISH
-  ln -s $FISH_CONFIG_DIR/config.fish $HOME_CONFIG_DIR/fish/config.fish
+  ln -sF $FISH_CONFIG_DIR/config.fish $HOME_CONFIG_DIR/fish/config.fish
+
+  # Link fish confs
   for fish_file in $FISH_CONFIG_DIR/conf.d/*
-   ln -s $fish_file $FISH_HOME_CONFIG_DIR/
+   ln -sF $fish_file $FISH_HOME_CONFIG_DIR/
   end
 
-  ln -s $CONFIG_DIR/tmux.conf $HOME/.tmux.conf
-  ln -s $CONFIG_DIR/alacritty.yml $HOME_CONFIG_DIR/alacritty/alacritty.yml
-  ln -s $CONFIG_DIR/nvim/init.vim $HOME_CONFIG_DIR/nvim/init.vim
-  ln -s $CONFIG_DIR/nvim/coc-settings.json $HOME_CONFIG_DIR/nvim/coc-settings.json
+  # Link fish functions
+  for fish_file in $FISH_CONFIG_DIR/functions/*
+    ln -sF $fish_file $FISH_HOME_FUNCTIONS_DIR/
+  end
+
+  ln -sF $CONFIG_DIR/tmux.conf $HOME/.tmux.conf
+  ln -sF $CONFIG_DIR/alacritty.yml $HOME_CONFIG_DIR/alacritty/alacritty.yml
+  ln -sF $CONFIG_DIR/nvim/init.vim $HOME_CONFIG_DIR/nvim/init.vim
+  ln -sF $CONFIG_DIR/nvim/coc-settings.json $HOME_CONFIG_DIR/nvim/coc-settings.json
 end
 
 function remove_links
 
   # Fish
   unlink $HOME/.config/fish/config.fish
+
+  # Unlink fish conf
   for fish_file in (ls $FISH_CONFIG_DIR/conf.d)
     unlink $FISH_HOME_CONFIG_DIR/$fish_file
+  end
+
+  # Unlink fish functions
+  for fish_file in (ls $FISH_CONFIG_DIR/functions)
+    unlink $FISH_HOME_FUNCTIONS_DIR/$fish_file
   end
 
   unlink $HOME/.tmux.conf
