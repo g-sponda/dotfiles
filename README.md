@@ -16,15 +16,21 @@ All the required software to run this repo is listed below:
 ```
 brew install neovim fish exa tmux peco jq direnv
 ```
-
 Extra stuff I have installed:
 * spotify-tui
 * pre-commit
 * ipcalc
-
+* ghq
 
 ```
-brew install spotify-tui pre-commit ipcalc
+brew install spotify-tui pre-commit ipcalc ghq
+```
+
+Pip stuff:
+* rainbowstream
+
+```
+pip install rainbowstream
 ```
 
 ## Installation
