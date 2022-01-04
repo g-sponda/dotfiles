@@ -38,7 +38,14 @@ pip install rainbowstream
 Clone the repo and run make install, this will create a symbolic link of the configuration files to your $HOME dir. It should not overwrite your already existing symlinks if any.
 ```
 git clone git@github.com:cacarico/dotfiles.git
+cd dotfiles
 make install
+```
+
+Or with `ghq` :p
+```
+ghq git@github.com:cacarico/dotfiles.git
+cd $HOME/ghq/github.com/cacarico/dotfiles
 ```
 
 ## Config
