@@ -21,9 +21,16 @@ Extra stuff I have installed:
 * pre-commit
 * ipcalc
 * ghq
+* bat
+* viu
+* ghostscript
+* imagemagick
+* poppler
+* libmagic
+* jump
 
 ```
-brew install spotify-tui pre-commit ipcalc ghq
+brew install spotify-tui pre-commit ipcalc ghq bat viu ghostscript imagemagick poppler libmagic jump libx11
 ```
 
 Pip stuff:

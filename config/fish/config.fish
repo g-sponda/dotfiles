@@ -9,6 +9,7 @@ export EDITOR=nvim
 # PATHS -----------------------
 # -----------------------------
 set PATH $PATH:$HOME/.cargo/bin
+set PATH $PATH:$HOME/go/bin
 
 # -----------------------------
 # Abbreviations ---------------
@@ -55,6 +56,7 @@ function fish_user_key_bindings
     fish_vi_key_bindings --no-erase insert
 end
 
+source ~/.config/fish/conf.d/*
 source ~/.config/fish/functions/*
 
 # Load .env files, https://github.com/direnv/direnv
