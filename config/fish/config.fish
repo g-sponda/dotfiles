@@ -61,3 +61,6 @@ source ~/.config/fish/functions/*
 
 # Load .env files, https://github.com/direnv/direnv
 direnv hook fish | source
+
+# https://github.com/gsamokovarov/jump
+jump shell fish | source
