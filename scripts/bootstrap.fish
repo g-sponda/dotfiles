@@ -21,6 +21,11 @@ function create_links
     ln -sF $fish_file $FISH_HOME_FUNCTIONS_DIR/
   end
 
+  # Link gitui functions
+  for gitui_file in $CONFIG_DIR/gitui/*
+    ln -sF $gitui_file $HOME_CONFIG_DIR/gitui/
+  end
+
   ln -sF $CONFIG_DIR/tmux.conf $HOME/.tmux.conf
   ln -sF $CONFIG_DIR/starship.toml $HOME_CONFIG_DIR/starship.toml
   ln -sF $CONFIG_DIR/alacritty.yml $HOME_CONFIG_DIR/alacritty/alacritty.yml
@@ -41,6 +46,11 @@ function remove_links
   # Unlink fish functions
   for fish_file in (ls $FISH_CONFIG_DIR/functions)
     unlink $FISH_HOME_FUNCTIONS_DIR/$fish_file
+  end
+
+  # Unlink fish functions
+  for gitui_file in (ls $CONFIG_DIR/gitui)
+    unlink $HOME_CONFIG_DIR/gitui/$gitui_file
   end
 
   unlink $HOME/.tmux.conf
