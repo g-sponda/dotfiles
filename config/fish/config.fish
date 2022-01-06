@@ -11,6 +11,8 @@ export EDITOR=nvim
 set PATH $PATH:$HOME/.cargo/bin
 set PATH $PATH:$HOME/go/bin
 
+set -x STARSHIP_CONFIG $HOME/.config/starship.toml
+
 # -----------------------------
 # Abbreviations ---------------
 # -----------------------------
@@ -64,3 +66,5 @@ direnv hook fish | source
 
 # https://github.com/gsamokovarov/jump
 jump shell fish | source
+# https://github.com/starship/starship
+starship init fish | source

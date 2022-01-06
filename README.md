@@ -28,9 +28,10 @@ Extra stuff I have installed:
 * poppler
 * libmagic
 * jump
+* starship
 
 ```
-brew install spotify-tui pre-commit ipcalc ghq bat viu ghostscript imagemagick poppler libmagic jump libx11
+brew install spotify-tui pre-commit ipcalc ghq bat viu ghostscript imagemagick poppler libmagic jump libx11 starship
 ```
 
 Pip stuff:

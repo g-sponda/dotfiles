@@ -112,7 +112,7 @@ call plug#begin('~/.vim/plugged')
   Plug 'itchyny/lightline.vim'
   Plug 'tpope/vim-fugitive'
 
-  Plug 'rust-lang/rust.vim'
+  " Plug 'rust-lang/rust.vim'
   Plug 'scrooloose/syntastic'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'hashivim/vim-terraform'

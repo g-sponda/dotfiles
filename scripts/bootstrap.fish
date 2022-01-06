@@ -22,6 +22,7 @@ function create_links
   end
 
   ln -sF $CONFIG_DIR/tmux.conf $HOME/.tmux.conf
+  ln -sF $CONFIG_DIR/starship.toml $HOME_CONFIG_DIR/starship.toml
   ln -sF $CONFIG_DIR/alacritty.yml $HOME_CONFIG_DIR/alacritty/alacritty.yml
   ln -sF $CONFIG_DIR/nvim/init.vim $HOME_CONFIG_DIR/nvim/init.vim
   ln -sF $CONFIG_DIR/nvim/coc-settings.json $HOME_CONFIG_DIR/nvim/coc-settings.json
@@ -43,6 +44,7 @@ function remove_links
   end
 
   unlink $HOME/.tmux.conf
+  unlink $HOME_CONFIG_DIR/starship.toml
   unlink $HOME_CONFIG_DIR/alacritty/alacritty.yml
   unlink $HOME_CONFIG_DIR/nvim/init.vim
   unlink $HOME_CONFIG_DIR/nvim/coc-settings.json
