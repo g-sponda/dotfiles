@@ -74,7 +74,7 @@ Funtions
 All plugins I have installed for omf
 
 ```
-omf install aws	git fish kubectl fish-kubectl-completions	omf fish-spec	z
+omf install aws git fish kubectl fish-kubectl-completions omf fish-spec z
 
 ```
 
