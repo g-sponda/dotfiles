@@ -69,6 +69,15 @@ Configs
 Funtions
 * n
 
+#### Oh My Fish
+
+All plugins I have installed for omf
+
+```
+omf install aws	git fish kubectl fish-kubectl-completions	omf fish-spec	z
+
+```
+
 ### Nvim
 
 Lots of configuration for my NeoVim editor.
