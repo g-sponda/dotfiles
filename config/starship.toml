@@ -69,5 +69,5 @@ stashed = "📦"
 modified = " 🦄 "
 staged = '[++\($count\)](green)'
 renamed = "👅"
-deleted = "🗑"
+deleted = "🗑 "
 
