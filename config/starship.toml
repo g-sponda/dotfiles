@@ -1,14 +1,4 @@
-[aws]
-format = 'on [$symbol($profile )(\($region\) )]($style)'
-style = "bold blue"
-# symbol = "🅰 "
-symbol = " "
-[aws.region_aliases]
-eu-central-1 = "eu"
-
-# Inserts a blank line between shell prompts
 add_newline = false
-
 
 format = """
 $custom\
@@ -16,6 +6,7 @@ $all\
 $kubernetes\
 $cmd_duration\
 $fill\
+$time\
 $line_break\
 $character
 """
@@ -27,7 +18,7 @@ symbol = " "
 disabled = false
 
 [character]
-success_symbol = "[➜](bold green)"
+success_symbol = "[❯](bold green)"
 error_symbol = "[✗](bold red)"
 
 [directory]
@@ -39,13 +30,20 @@ truncation_symbol = "…/"
 [kubernetes]
 disabled = false
 style = "purple bold"
-format = 'on [$symbol$context( \($namespace\))]($style) '
+format = 'on [⛵ $symbol$context( \($namespace\))]($style) '
 
 [kubernetes.context_aliases]
-"dev.local.cluster.k8s" = "dev"
-".*/openshift-cluster/.*" = "openshift"
-"gke_.*_(?P<cluster>[\\w-]+)" = "gke-$cluster"
+"arn:aws:eks:eu-central-1:.*:cluster/staging" = "staging"
+"arn:aws:eks:eu-central-1:.*:cluster/tatooine" = "tatooine"
+"arn:aws:eks:eu-central-1:.*:cluster/production" = "production"
 
+
+[time]
+disabled = false
+use_12hr = false
+format = '[ $time ]($style) '
+time_format = "%T"
+utc_time_offset = "local"
 
 #                 
 [custom.os-icon]
@@ -56,4 +54,10 @@ format = "[$symbol($output  )]($style)"
 symbol = ""
 when = "true"
 shell = ["bash", "--noprofile", "--norc"]
+
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+style = "bold blue"
+# symbol = "☁️ "
+symbol = "🌨️  "
 
